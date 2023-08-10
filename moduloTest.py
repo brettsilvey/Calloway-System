@@ -1,8 +1,12 @@
 import os
 
-count = 1
-col1 = 76
-while count <= 11:
-    print(col1 % 6)
-    col1 += 5
-    count += 1
+def apply_function(func, x):
+   return func(x)
+
+def square(x):
+   return x ** 2
+
+print(square(3))
+
+result = apply_function(square, 3)
+print(result)
