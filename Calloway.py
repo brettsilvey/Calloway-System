@@ -198,7 +198,7 @@ def main(scorecard):
 
 
 # main(DriveNThriive)
-# main(Osama)
+main(Osama)
 # main(DressForLess)
 # main(GG)
 # main(DaddysMoney)
