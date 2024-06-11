@@ -20,4 +20,12 @@ Gross				Handicap Deduction
 
 Above is the chart used to calculate the adjusted score.
 
+RUNING INSTRUCTIONS:
+To run this file you will need a valid version of python downloaded.
 
+1.Open file in vsCode - assuming you have an interpreter selected within the vs environment, selecting the play button in the top right hand corner should run the file.
+
+If you do not have VS Code:
+1. Open a terminal/command prompt window.
+2. Navigate to where the file is located. (Cd to the directory)
+3. run the command "python3 callowayP2.py"
