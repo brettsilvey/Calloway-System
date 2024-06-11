@@ -29,12 +29,10 @@ while len(scoreCard) != 18:
 ### END of DATA COLLECTION ###
 
 # returns holes deduction
-def get_Holes(grossScore):
-    return deductions.get(grossScore)[0]
+get_Holes = deductions.get(totalScore)[0]
 
 # returns handicap adjustment
-def get_Adjustment(grossScore):
-    return deductions.get(grossScore)[1]
+get_Adjustment = deductions.get(totalScore)[1]
 
 
 # determine final score
@@ -58,4 +56,4 @@ def callyScore(scorecard, holeAmount, adjustment): # add hole amount, adjustment
         holeAmount -= 1
         
 
-print(totalScore - callyScore(scoreCard, get_Holes(totalScore), get_Adjustment(totalScore)))
+print(totalScore - callyScore(scoreCard, get_Holes, get_Adjustment))
