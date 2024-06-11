@@ -1,7 +1,7 @@
 # Calloway System
  Used for calculating golf scores with Calloway System
 
- Gross					Handicap Deduction		
+Gross				Handicap Deduction		
 -	-	70	71	72	Scratch		
 73	74	75	-	-	1/2 of Worst Hole		
 76	77	78	79	80	Worst Hole		

@@ -16,10 +16,16 @@ scoreCard = []
 hole = 1
 totalScore = 0
 while len(scoreCard) != 18:
-    curr = int(input("Enter Score for hole " + str(hole) + ": "))
-    scoreCard.append(curr)
+    while True:
+        curr = (input("Enter Score for hole " + str(hole) + ": "))
+        if curr.isdigit() and (int(curr) <=10 and int(curr) > 0):
+            scoreCard.append(int(curr))
+            break
+        else:
+            print("Input is not valid, please make sure you use a number within 1-10")
+
     hole += 1
-    totalScore += (curr)
+    totalScore += (int(curr))
 ### END of DATA COLLECTION ###
 
 # returns holes deduction
@@ -38,7 +44,7 @@ def callyScore(scorecard, holeAmount, adjustment): # add hole amount, adjustment
     
     curr = 0 # used to iterate through scorecard
     total = 0 # used to calc total deduction
-    while True: # this feels dangerous since it never changes. Need to end as soon as 0.5 or 0 are found
+    while True:
         # check for 0.5
         if holeAmount == 0.5:
             total += math.ceil(scorecard[curr]/2)
@@ -46,7 +52,7 @@ def callyScore(scorecard, holeAmount, adjustment): # add hole amount, adjustment
         # check for 0
         elif holeAmount == 0:
             return total + adjustment
-        # if none, updat values
+        # if neither are true, update values
         total += scorecard[curr]
         curr +=1
         holeAmount -= 1
