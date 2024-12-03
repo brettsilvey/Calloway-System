@@ -1,14 +1,41 @@
 from DB_Connect import connect_to_database
-from DB_Interact import delete_row, insert_TeamName, fetch_TeamName
+from DB_Interact import delete_Team, insert_TeamName, fetch_TeamNameInfo, insert_Scorecard, fetch_ScorecardID, insert_scores
 
 
 def main():
     #user_input = input("Please enter a team name: ")
     #print(user_input)
-    connection = connect_to_database()
-    if connection:
-        # do database stuff
-        print("Connected to the database")
-    connection.close()
+    print("Hello World - Welcome to the Calloway Scoring system")
+
+    teamID = fetch_TeamNameInfo('tester')
+    
+    # prints out team information
+    if teamID:
+        print("Team exists")
+        print("Tuple: " + str(teamID))
+        print("Team ID: " + str(teamID[0]))
+        print("Team Name: " + str(teamID[1]))
+    else:
+        print("Team does not exist")
+
+    # prints out scorecard information
+
+    scorecard = fetch_ScorecardID(teamID[0], "best ball")
+
+    if scorecard:
+        print("Scorecard exists")
+        print("Tuple: " + str(scorecard))
+        print("Scorecard ID: " + str(scorecard[0]))
+        print("Team ID: " + str(scorecard[1]))
+        print("Course Name: " + str(scorecard[2]))
+        print("Round Type: " + str(scorecard[3]))
+
+    
+    # insert some scores
+    hole = 1
+    while hole < 19:
+        strokes = input(f"Enter the number of strokes for hole {hole}: ")
+        insert_scores(scorecard[0], hole, strokes)
+        hole += 1
 
 main()
