@@ -21,6 +21,7 @@ class Leaderboard:
     def addScorecard(self, teamName, SC):
         self.list.append((teamName, SC))
         return self.list
+    
 
 class Scorecard:
     def __init__(self, list, name):
@@ -90,36 +91,3 @@ class Scorecard:
     # Return Calloway Score
     def cally(self):
         return int(self.totalScore()) - int(self.getDeduction())
-    
-
-
-brettsScore = [4, 5, 3, 3, 4, 4, 4, 4, 4, 5, 5, 3, 3, 4, 4, 4, 4, 4]
-brettsScore2 = [7, 7, 5, 5, 6, 6, 6, 6, 6, 7, 7, 5, 5, 6, 6, 6, 6, 6]
-
-# Create scorecard objects
-myScorecard = Scorecard(brettsScore2, "Whalers")
-scorecard2 = Scorecard(brettsScore, "Brett")
-
-print("Team Name: " + myScorecard.getName())
-print("Scorecard: " + str(myScorecard.getScorecard()))
-print("Total Score: " + str(myScorecard.totalScore()))
-print("High to Low: " + str(myScorecard.sort()))
-print("Holes Given: " + str(myScorecard.getHoles()))
-print("Gross Holes Deduction: " + str(myScorecard.getDeduction()))
-print("Handicap Adjustment: " + str(myScorecard.getAdjustment()))
-print("Callaway Score: " + str(myScorecard.cally()))
-
-# Creates new Leaderboard Objects
-Gamble_Cally = Leaderboard([], "Gamble Scramble - Callaway")
-Gamble_Total = Leaderboard([], "Gamble Scramble - Total")
-
-# Adds Scores and Team Names to the leaderboard
-Gamble_Total.addScorecard(myScorecard.getName(), myScorecard.totalScore())
-Gamble_Total.addScorecard(scorecard2.getName(), scorecard2.totalScore())
-
-Gamble_Cally.addScorecard(myScorecard.getName(), myScorecard.cally())
-Gamble_Cally.addScorecard(scorecard2.getName(), scorecard2.cally())
-
-# Prints out leaderboard
-Gamble_Total.getLeaderboard()
-Gamble_Cally.getLeaderboard()
