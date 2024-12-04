@@ -7,17 +7,29 @@ def main():
     #user_input = input("Please enter a team name: ")
     #print(user_input)
     print("Hello World - Welcome to the Calloway Scoring system")
-    create_entireEntry()
+    # create_entireEntry()
 
-    scorecardList = create_ScorecardOBJs("scramble")
+    scorecardList = create_ScorecardOBJs("Scramble")
 
     print(len(scorecardList))
 
+    print("Before Sorting")
+    # print values before sorting
     for scorecard in scorecardList:
         print(scorecard.getName())
-        print(scorecard.getScorelist())
-        print("Total Score: " + str(scorecard.totalScore()))
-        print("Calloway Score: " + str(scorecard.cally()))
+        # print(scorecard.getScorelist())
+        print(scorecard.totalScore())
+        # print(scorecard.getHoles())
+        print(scorecard.cally())
+
+
+    # sortedScorecard = sorted(scorecardList, key=lambda x: x.totalScore())
+    # print("After Sorting")
+    # #print values after sorting
+    # for scorecard in sortedScorecard:
+    #     print(scorecard.getName())
+    #     print(scorecard.getScorelist())
+    #     print(scorecard.totalScore())
 
 def create_entireEntry():
     teamName = input("Enter the team name: ")

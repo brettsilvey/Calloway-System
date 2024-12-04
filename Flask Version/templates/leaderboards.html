@@ -1,6 +1,91 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Leaderboards</h1>
-<p>This is the leaderboards page.</p>
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <h1 class="text-center mb-4">Leaderboards</h1>
+
+            <!-- Best Ball Section -->
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white" data-toggle="collapse" data-target="#bestBallSection" aria-expanded="true" aria-controls="bestBallSection">
+                    <h5 class="card-title mb-0">Best Ball</h5>
+                </div>
+                <div id="bestBallSection" class="collapse show">
+                    <div class="card-body bg-secondary">
+                        {% if bestBallList %}
+                            {% for scorecard in bestBallList %}
+                            <div class="card mt-2">
+                                <div class="card-body">
+                                    <h6 class="card-title">{{ scorecard.getName() }}</h6>
+                                    <p class="card-text">
+                                        Scorecard: {{ scorecard.getScorelist() }}<br>
+                                        Total Score: {{ scorecard.totalScore() }}<br>
+
+                                    </p>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        {% else %}
+                            <p class="text-muted">No scorecards available.</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scramble Section -->
+            <div class="card mb-4">
+                <div class="card-header bg-success text-white" data-toggle="collapse" data-target="#scrambleSection" aria-expanded="false" aria-controls="scrambleSection">
+                    <h5 class="card-title mb-0">Scramble</h5>
+                </div>
+                <div id="scrambleSection" class="collapse">
+                    <div class="card-body bg-secondary">
+                        {% if scrambleList %}
+                            {% for scorecard in scrambleList %}
+                            <div class="card mt-2">
+                                <div class="card-body">
+                                    <h6 class="card-title">{{ scorecard.getName() }}</h6>
+                                    <p class="card-text">
+                                        Scorecard: {{ scorecard.getScorelist() }}<br>
+                                        Total Score: {{ scorecard.totalScore() }}<br>
+                                    </p>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        {% else %}
+                            <p class="text-muted">No scorecards available.</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Standard Section -->
+            <div class="card mb-4">
+                <div class="card-header bg-warning text-white" data-toggle="collapse" data-target="#standardSection" aria-expanded="false" aria-controls="standardSection">
+                    <h5 class="card-title mb-0">Standard</h5>
+                </div>
+                <div id="standardSection" class="collapse">
+                    <div class="card-body bg-secondary">
+                        {% if strokePlayList %}
+                            {% for scorecard in strokePlayList %}
+                            <div class="card mt-2">
+                                <div class="card-body">
+                                    <h6 class="card-title">{{ scorecard.getName() }}</h6>
+                                    <p class="card-text">
+                                        Scorecard: {{ scorecard.getScorelist() }}<br>
+                                        Total Score: {{ scorecard.totalScore() }}<br>
+                                    </p>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        {% else %}
+                            <p class="text-muted">No scorecards available.</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
 {% endblock %}
