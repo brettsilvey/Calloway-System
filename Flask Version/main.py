@@ -1,6 +1,9 @@
 from flask import Flask, redirect, url_for, render_template
 from flask_mysqldb import MySQL
-
+from DB_Connect import connect_to_database
+from DB_Interact import delete_Team, insert_TeamName, fetch_TeamNameInfo, insert_Scorecard, fetch_ScorecardID, insert_scores, fetch_scores
+from create_Objects import create_ScorecardOBJs
+from classes import Scorecard_OBJ
 
 app = Flask(__name__)
 
@@ -27,11 +30,7 @@ def createScorecards():
 
 @app.route("/db_test")
 def db_test():
-    cur = mysql.connection.cursor()
-    cur.execute("SELECT * FROM team_info")
-    data = cur.fetchall()
-    cur.close()
-    return str(data)
+    return str(fetch_TeamNameInfo('tester'))
 
 if __name__ == "__main__":
     app.run()

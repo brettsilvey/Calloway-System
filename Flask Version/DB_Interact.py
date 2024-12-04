@@ -70,6 +70,20 @@ def fetch_TeamNameInfo(teamName):
         cursor.close() # delete the cursor
         connection.close() # close the connection
 
+def fetch_TeamID(teamID):
+    connection = connect_to_database() # connect to database
+    try:
+        if connection: # check if connection is successful
+            cursor = connection.cursor() # create cursor object
+            cursor.execute("SELECT * FROM teams WHERE teamID = %s", (teamID,)) #query the tuple matching teamName
+            teamName = cursor.fetchone() # fetch the tuple and set to teamID
+            return teamName # return the information 
+    except mysql.connector.Error as err: # check for errors
+        print(f"Error: {err}")
+    finally:
+        cursor.close() # delete the cursor
+        connection.close() # close the connection
+
 # Insert new scorecard entry into the scorecards table
 def insert_Scorecard(teamID, courseName, roundType):
     connection = connect_to_database() #connect to the database
@@ -135,7 +149,7 @@ def fetch_scores(scorecardID):
     connection = connect_to_database()
     try:
         cursor = connection.cursor()
-        cursor.execute("SELECT * FROM scores WHERE scorecardID = %s", (scorecardID,))
+        cursor.execute("SELECT holeNum, strokes FROM scores WHERE scorecardID = %s", (scorecardID,))
         scores = cursor.fetchall()
         return scores
     except mysql.connector.Error as err:
